@@ -1,9 +1,9 @@
 
 
 export const queriesUsu = {
-    getAllUsurio : 'SELECT * FROM Usuario',
+    getAllUsuario : 'SELECT * FROM Usuario',
 
     getUsuarioByPassword: 'SELECT * FROM Usuario WHERE password =@password',
 
-    createNewUsuario: "INSERT INTO Empleado (email , password,empleado)  VALUES (@email,@password, @empleado)"
+    createNewUsuario: "INSERT INTO Usuario (email , password, empleado)  VALUES (@email,@password, @empleado)"
 }

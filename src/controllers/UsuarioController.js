@@ -4,7 +4,7 @@ import { getConnection , sql, queriesUsu} from "../database/index.js";
 export const getUsuario = async (req,res) => {
     try {
         const pool = await getConnection();
-        const result = await pool.request().query(queriesUsu.getAllUsuarios)
+        const result = await pool.request().query(queriesUsu.getAllUsuario)
         res.json(result.recordset)        
     } catch (error) {
         res.status(500)
@@ -21,7 +21,7 @@ const usuario ={email, password, empleado};
     const camposVacios = [];
     console.log(req.body)    
     Object.keys(usuario).forEach(key => {
-        if ( (emp[key] == null || emp[key] === '')) {
+        if ( (usuario[key] == null || usuario[key] === '')) {
             camposVacios.push(key);
         }
     });
@@ -36,20 +36,20 @@ const usuario ={email, password, empleado};
     .input("email", sql.VarChar,email)
     .input("password", sql.VarChar,password)
     .input("empleado", sql.Int,empleado)
-    .query(queriesRec.createNewUsuario)
+    .query(queriesUsu.createNewUsuario)
         
     } catch (error) {
      res.status(500)
      res.send(error.message)        
     }
     
-    res.json('new empleado')        
+    res.json('new usuario')        
 }
 export const getUsuarioByPassword = async (req, res)=>{
  try {
     const {password}= req.params
     const pool = await getConnection();
-    const result = await pool.request().input("password",password).query(queriesRec.getUsuarioByPassword)
+    const result = await pool.request().input("password",password).query(queriesUsu.getUsuarioByPassword)
     console.log(result)
     res.send(result.recordset[0])    
  } catch (error) {

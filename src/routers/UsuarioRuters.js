@@ -6,7 +6,7 @@ const routerUsuario= Router();
 
 routerUsuario.get('/Usuario', getUsuario)
 
-routerUsuario.get('/Usuario', getUsuarioByPassword)
+routerUsuario.get('/Usuario/:password', getUsuarioByPassword)
 
 routerUsuario.post('/Usuario', createNewUsuario )
 
